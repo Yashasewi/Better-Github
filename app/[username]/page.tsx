@@ -33,10 +33,8 @@ export default async function UserNamePage({
 }: {
   params: { username: string };
 }) {
-  // catch the error here
   const data = await getUserData(params.username);
 
-  // const data = await getUserData(params.username);
   console.log(data);
 
   return (
