@@ -19,16 +19,31 @@ function Container({
   );
 }
 
-export default function UserNamePage({
+async function getUserData(username: string) {
+  const res = await fetch(`https://api.github.com/users/${username}`);
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  const data = await res.json();
+  return data;
+}
+
+export default async function UserNamePage({
   params,
 }: {
   params: { username: string };
 }) {
+  // catch the error here
+  const data = await getUserData(params.username);
+
+  // const data = await getUserData(params.username);
+  console.log(data);
+
   return (
     <div>
       <div className="flex flex-col items-center justify-center mt-20 mb-12 gap-y-2">
         <Avatar className="w-48 h-48">
-          <AvatarImage src="https://github.com/shadcn.png" />
+          <AvatarImage src={`${data.avatar_url}`} />
           <AvatarFallback>
             <Skeleton className="w-48 h-48 rounded-full" />
           </AvatarFallback>
@@ -39,14 +54,13 @@ export default function UserNamePage({
         <div className="flex space-x-4 text-sm text-muted-foreground">
           <div className="flex items-center justify-center gap-2 text-lg font-medium">
             <span className=" text-slate-500"> Followers</span>
-            <span className="text-base mt-[2px]">76</span>
+            <span className="text-base mt-[2px]">{data.followers}</span>
           </div>
 
           <div className="flex items-center gap-2 text-lg font-medium">
             <span className="text-slate-500">Following</span>
-            <span className="text-base mt-[2px]">76</span>
+            <span className="text-base mt-[2px]">{data.following}</span>
           </div>
-          {/* <div>Updated April 2023</div> */}
         </div>
       </div>
 
