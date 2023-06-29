@@ -1,5 +1,4 @@
 import { Circle, Star } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -8,8 +7,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { CardsProps } from "@/lib/types";
 
-export function Github_card() {
+export function Github_card({ repo }: CardsProps) {
+  console.log(repo);
   return (
     <Card>
       <CardHeader className="grid grid-cols-[1fr_110px] items-start gap-4 space-y-0">
