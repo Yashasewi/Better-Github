@@ -5,6 +5,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import Container from "@/components/ui/container";
 import Link from "next/link";
 import { UserData, params, repo } from "@/lib/types";
+import SvgComponent from "@/components/SvgComponentProps";
+import Image from "next/image";
 
 async function getUserData(username: string): Promise<UserData> {
   const res = await fetch(`https://api.github.com/users/${username}`);
@@ -33,6 +35,7 @@ export default async function UserNamePage({ params }: params) {
   // console.log(repoData);
   console.log(repoData[1]);
   console.log(repoData[1].name);
+  const username = params.username;
 
   return (
     <div>
@@ -61,7 +64,61 @@ export default async function UserNamePage({ params }: params) {
         </div>
       </div>
 
-      <Container className="m-8 card_container">
+      {/* <Container className="mb-0 ml-8 mr-8 card_container "> */}
+
+      {/* </Container> */}
+
+      {/* show the profile graphs */}
+      {/* <Container className="mt-4 ml-8 card_container">
+        <img
+          src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=transparent&card_width=480`}
+          alt="Github chart"
+          height={195}
+        />
+        <img
+          src={`https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=transparent&include_all_commits&line_height=20&card_width=480`}
+          alt="Github chart"
+        />
+        <img
+          style={{
+            maxWidth: "480px",
+            height: "165px",
+          }}
+          src={`https://streak-stats.demolab.com?user=${username}&theme=transparent&ring=orange&fire=orange&sideNums=black&currStreakNum=black&type=png`}
+          alt="Github chart"
+        />
+      </Container> */}
+
+      <div className="text-xl font-medium ">
+        <span className="ml-8 mr-4 text-slate-700 ">Graphs</span>
+      </div>
+
+      <Container className="m-8 mt-4 card_container">
+        <img
+          src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=transparent&card_width=480`}
+          alt="Github chart"
+          height={195}
+        />
+        <img
+          src={`https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=transparent&include_all_commits&line_height=20&card_width=480`}
+          alt="Github chart"
+        />
+        <img
+          style={{
+            maxWidth: "480px",
+            height: "165px",
+          }}
+          src={`https://streak-stats.demolab.com?user=${username}&theme=transparent&ring=orange&fire=orange&sideNums=black&currStreakNum=black&type=png`}
+          alt="Github chart"
+        />
+      </Container>
+      <div className="text-lg font-medium ">
+        <span className="ml-8 mr-4 text-slate-700 ">Repositories</span>
+        <span className="text-base text-slate-600 mt-[2px]">
+          {data.public_repos}
+        </span>
+      </div>
+      <Container className="m-8 mt-4 card_container">
         {repoData.map((repo: repo) => (
           <Cards key={repo.id} repo={repo} />
         ))}
