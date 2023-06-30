@@ -9,12 +9,9 @@ import {
 } from "@/components/ui/card";
 import { Colors } from "@/lib/Colors";
 import { CardsProps } from "@/lib/types";
+import { truncate } from "@/lib/utils";
 
 export function Github_card({ repo }: CardsProps) {
-  const truncate = (str: string, n: number = 80) => {
-    return str.length > n ? str.substr(0, n - 1) + "..." : str;
-  };
-
   const daysAgo = (date: Date) => {
     const today = new Date();
     const created = new Date(date);
