@@ -5,8 +5,6 @@ import { Skeleton } from "@/components/ui/skeleton";
 import Container from "@/components/ui/container";
 import Link from "next/link";
 import { UserData, params, repo } from "@/lib/types";
-import SvgComponent from "@/components/SvgComponentProps";
-import Image from "next/image";
 
 async function getUserData(username: string): Promise<UserData> {
   const res = await fetch(`https://api.github.com/users/${username}`);
@@ -33,8 +31,8 @@ export default async function UserNamePage({ params }: params) {
 
   const repoData = await getRepoData(params.username);
   // console.log(repoData);
-  console.log(repoData[1]);
-  console.log(repoData[1].name);
+  // console.log(repoData[1]);
+  // console.log(repoData[1].name);
   const username = params.username;
 
   return (
