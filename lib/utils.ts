@@ -6,5 +6,5 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function truncate(str: string, n: number = 80) {
-  return str.length > n ? str.substr(0, n - 1) + "..." : str;
+  return str?.length > n ? str.substr(0, n - 1) + "..." : str;
 }
