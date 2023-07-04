@@ -99,8 +99,8 @@ export default async function UserNamePage({ params }: params) {
       </section>
       <section>
         <div className="text-lg font-medium ">
-          <span className="ml-8 mr-4 text-slate-700 ">Repositories</span>
-          <span className="text-base text-slate-600 mt-[2px]">
+          <span className="ml-8 mr-3 text-slate-700 ">Repositories</span>
+          <span className="text-sm text-slate-600 m-[2px]">
             {data.public_repos}
           </span>
         </div>
