@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { ModeToggle } from "@/components/ui/toggle";
 import { cn } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
@@ -20,6 +21,9 @@ export default function Home() {
                 " min-h-screen flex flex-col items-center justify-center gap-y-16"
             )}
         >
+            <div className="absolute top-2 right-9">
+                <ModeToggle />
+            </div>
             <h1 className="text-4xl font-bold text-center">
                 Enter your Github username
             </h1>
